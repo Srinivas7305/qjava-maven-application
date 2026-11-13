@@ -90,13 +90,8 @@ pipeline {
         }
         stage('SonarQube Analysis') {
             steps {
-                    withSonarQubeEnv('SonarQube') {
-                       sh '''
-                        mvn -B sonar:sonar \ 
-                        -Dsonar.scanner.skipJreProvisioning=true \
-                            -Dsonar.projectKey=sonar-first-project
-                          '''
-                        
+                withSonarQubeEnv('SonarQube') {
+                    sh 'mvn -B sonar:sonar -Dsonar.scanner.skipJreProvisioning=true -Dsonar.projectKey=sonar-first-project'
                 }
             }
         }
