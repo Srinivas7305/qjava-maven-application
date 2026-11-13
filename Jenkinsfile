@@ -92,7 +92,8 @@ pipeline {
             steps {
                     withSonarQubeEnv('SonarQube') {
                        sh '''
-                        mvn -B sonar:sonar \
+                        mvn -B sonar:sonar \ 
+                        -Dsonar.scanner.skipJreProvisioning=true \
                             -Dsonar.projectKey=sonar-first-project
                           '''
                         
